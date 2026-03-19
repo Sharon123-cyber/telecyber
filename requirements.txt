@@ -1,0 +1,4 @@
+telethon
+requests
+supabase
+python-dotenv
