@@ -1,6 +1,7 @@
 import asyncio
 import requests
 from telethon import TelegramClient, events
+from telethon.sessions import StringSession
 
 import os
 from dotenv import load_dotenv
@@ -25,7 +26,8 @@ headers = {
     "Prefer": "return=representation",
 }
 
-client = TelegramClient("session", api_id, api_hash)
+session = os.getenv("SESSION")
+client = TelegramClient(StringSession(session), api_id, api_hash)
 
 @client.on(events.NewMessage(chats=channel_name))
 async def handler(event):
